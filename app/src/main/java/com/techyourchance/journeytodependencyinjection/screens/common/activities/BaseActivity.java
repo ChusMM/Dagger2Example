@@ -1,5 +1,6 @@
 package com.techyourchance.journeytodependencyinjection.screens.common.activities;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.UiThread;
 import android.support.v7.app.AppCompatActivity;
 
@@ -8,6 +9,7 @@ import com.techyourchance.journeytodependencyinjection.common.dependencyinjectio
 import com.techyourchance.journeytodependencyinjection.common.dependencyinjection.presentation.PresentationComponent;
 import com.techyourchance.journeytodependencyinjection.common.dependencyinjection.presentation.PresentationModule;
 
+@SuppressLint("Registered")
 public class BaseActivity extends AppCompatActivity {
 
     private boolean mIsInjectorUsed;
