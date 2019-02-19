@@ -47,6 +47,11 @@
          mQuestionDetailsViewModel = ViewModelProviders.of(this, mViewModelFactory)
                  .get(QuestionDetailsViewModel.class);
 
+         if (savedInstanceState == null) {
+             getSupportFragmentManager().beginTransaction().add(mViewMvc.getFrameFragment().getId(),
+                     new SimpleFragment()).commit();
+         }
+
          setContentView(mViewMvc.getRootView());
 
          //noinspection ConstantConditions

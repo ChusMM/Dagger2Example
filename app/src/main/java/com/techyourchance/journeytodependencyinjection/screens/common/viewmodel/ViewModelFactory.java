@@ -4,19 +4,21 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.techyourchance.journeytodependencyinjection.questions.FetchQuestionDetailsUseCase;
 import com.techyourchance.journeytodependencyinjection.screens.questiondetails.QuestionDetailsViewModel;
 import com.techyourchance.journeytodependencyinjection.screens.questionslist.QuestionsListViewModel;
 
+import javax.inject.Provider;
+
 public class ViewModelFactory implements ViewModelProvider.Factory {
 
-    private final QuestionDetailsViewModel mQuestionDetailsViewModel;
-    private final QuestionsListViewModel mQuestionsListViewModel;
+    private final Provider<QuestionDetailsViewModel> questionDetailsViewModelProvider;
+    private final Provider<QuestionsListViewModel> questionsListViewModelProvider;
 
-    public ViewModelFactory(QuestionDetailsViewModel questionDetailsViewModel,
-                            QuestionsListViewModel questionsListViewModel) {
-        mQuestionDetailsViewModel = questionDetailsViewModel;
-        mQuestionsListViewModel = questionsListViewModel;
+
+    public ViewModelFactory(Provider<QuestionDetailsViewModel> questionDetailsViewModelProvider,
+                            Provider<QuestionsListViewModel> questionsListViewModelProvider) {
+        this.questionDetailsViewModelProvider = questionDetailsViewModelProvider;
+        this.questionsListViewModelProvider = questionsListViewModelProvider;
     }
 
     @SuppressWarnings("unchecked")
@@ -25,10 +27,10 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         ViewModel viewModel;
         if (modelClass == QuestionDetailsViewModel.class) {
-            viewModel = mQuestionDetailsViewModel;
+            viewModel = questionDetailsViewModelProvider.get();
         }
         else if (modelClass == QuestionsListViewModel.class) {
-            viewModel = mQuestionsListViewModel;
+            viewModel = questionsListViewModelProvider.get();
         }
         else {
             throw new RuntimeException("invalid view model class: " + modelClass);

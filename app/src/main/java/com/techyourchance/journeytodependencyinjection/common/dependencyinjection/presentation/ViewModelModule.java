@@ -5,6 +5,8 @@ import com.techyourchance.journeytodependencyinjection.screens.common.viewmodel.
 import com.techyourchance.journeytodependencyinjection.screens.questiondetails.QuestionDetailsViewModel;
 import com.techyourchance.journeytodependencyinjection.screens.questionslist.QuestionsListViewModel;
 
+import javax.inject.Provider;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -12,9 +14,9 @@ import dagger.Provides;
 public class ViewModelModule {
 
     @Provides
-    ViewModelFactory viewModelFactory(QuestionDetailsViewModel questionDetailsViewModel,
-                                      QuestionsListViewModel questionsListViewModel) {
-        return new ViewModelFactory(questionDetailsViewModel, questionsListViewModel);
+    ViewModelFactory viewModelFactory(Provider<QuestionDetailsViewModel> questionDetailsViewModelProvider,
+                                      Provider<QuestionsListViewModel> questionsListViewModelProvider) {
+        return new ViewModelFactory(questionDetailsViewModelProvider, questionsListViewModelProvider);
     }
 
     @Provides

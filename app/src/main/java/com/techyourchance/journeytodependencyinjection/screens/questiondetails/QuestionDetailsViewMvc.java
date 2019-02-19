@@ -1,5 +1,7 @@
 package com.techyourchance.journeytodependencyinjection.screens.questiondetails;
 
+import android.widget.FrameLayout;
+
 import com.techyourchance.journeytodependencyinjection.questions.QuestionDetails;
 import com.techyourchance.journeytodependencyinjection.screens.common.mvcviews.ObservableViewMvc;
 
@@ -10,4 +12,5 @@ public interface QuestionDetailsViewMvc extends ObservableViewMvc<QuestionDetail
     }
 
     void bindQuestion(QuestionDetails question);
+    FrameLayout getFrameFragment();
 }

@@ -3,6 +3,7 @@ package com.techyourchance.journeytodependencyinjection.screens.questiondetails;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class QuestionDetailsViewMvcImpl extends BaseViewMvc<QuestionDetailsViewM
 
     private final TextView mTxtUserDisplayName;
     private final ImageView mImgUserAvatar;
+    private final FrameLayout mFrameFragment;
 
     public QuestionDetailsViewMvcImpl(LayoutInflater inflater, ViewGroup container, ImageLoader imageLoader) {
         mImageLoader = imageLoader;
@@ -28,6 +30,8 @@ public class QuestionDetailsViewMvcImpl extends BaseViewMvc<QuestionDetailsViewM
         mTxtQuestionBody = findViewById(R.id.txt_question_body);
         mTxtUserDisplayName = findViewById(R.id.txt_user_display_name);
         mImgUserAvatar = findViewById(R.id.img_user_avatar);
+
+        mFrameFragment = findViewById(R.id.frame_fragment);
     }
 
     @Override
@@ -42,5 +46,10 @@ public class QuestionDetailsViewMvcImpl extends BaseViewMvc<QuestionDetailsViewM
 
         mTxtUserDisplayName.setText(question.getUserDisplayName());
         mImageLoader.loadImage(question.getUserAvatarUrl(), mImgUserAvatar);
+    }
+
+    @Override
+    public FrameLayout getFrameFragment() {
+        return null;
     }
 }
